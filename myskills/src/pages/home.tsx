@@ -6,6 +6,7 @@ import {
   TextInput,
   Platform,
   FlatList,
+  Keyboard,
 } from 'react-native';
 
 import { Button } from '../components/Button';
@@ -44,7 +45,13 @@ export function Home() {
         onChangeText={setNewSkill}
         value={newSkill}
       />
-      <Button onPress={handleAddSkill} />
+      <Button
+        onPress={() => {
+          handleAddSkill();
+          Keyboard.dismiss();
+        }}
+        title="Add"
+      />
       <Text style={[styles.title, styles.mySkills]}>My Skills</Text>
       <FlatList
         data={skills}
