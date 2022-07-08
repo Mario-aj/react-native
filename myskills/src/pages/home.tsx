@@ -35,6 +35,10 @@ export function Home() {
     setNewSkill('');
   };
 
+  const handleRemoveSkill = (id: string) => {
+    setSkills(oldSkills => oldSkills.filter(skill => skill.id !== id));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Welcome, Mário</Text>
@@ -57,7 +61,12 @@ export function Home() {
         data={skills}
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <CardSkill skill={item.name} />}
+        renderItem={({ item }) => (
+          <CardSkill
+            skill={item.name}
+            onPress={() => handleRemoveSkill(item.id)}
+          />
+        )}
       />
     </SafeAreaView>
   );
