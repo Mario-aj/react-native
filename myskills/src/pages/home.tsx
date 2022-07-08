@@ -11,16 +11,26 @@ import {
 import { Button } from '../components/Button';
 import { CardSkill } from '../components/CardSkill';
 
+interface MySkills {
+  id: string;
+  name: string;
+}
+
 export function Home() {
   const [newSkill, setNewSkill] = React.useState('');
-  const [skills, setSkills] = React.useState([]);
+  const [skills, setSkills] = React.useState<MySkills[]>([]);
 
   const handleAddSkill = () => {
     if (newSkill.trim() === '') {
       return;
     }
 
-    setSkills(oldSkills => [...oldSkills, newSkill]);
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkill,
+    };
+
+    setSkills(oldSkills => [...oldSkills, data]);
     setNewSkill('');
   };
 
@@ -37,10 +47,10 @@ export function Home() {
       <Button onPress={handleAddSkill} />
       <Text style={[styles.title, styles.mySkills]}>My Skills</Text>
       <FlatList
-        showsVerticalScrollIndicator={false}
         data={skills}
-        renderItem={({ item }) => <CardSkill skill={item} />}
-        keyExtractor={item => item}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => <CardSkill skill={item.name} />}
       />
     </SafeAreaView>
   );
