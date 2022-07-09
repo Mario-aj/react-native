@@ -27,6 +27,8 @@ export const AddTask = ({ onAddTask }: Props) => {
         placeholderTextColor="#B2B2B2"
         value={task}
         onChangeText={setTask}
+        returnKeyType="send"
+        onSubmitEditing={handleAddTask}
       />
       <TouchableOpacity
         onPress={handleAddTask}
