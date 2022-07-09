@@ -8,23 +8,28 @@ import {
 } from 'react-native';
 
 type Props = {
-  value: string;
-  onAddTask: () => void;
-  onChange: (text: string) => void;
+  onAddTask: (task: string) => void;
 };
 
-export const AddTask = ({ value, onChange, onAddTask }: Props) => {
+export const AddTask = ({ onAddTask }: Props) => {
+  const [task, setTask] = React.useState('');
+
+  const handleAddTask = () => {
+    onAddTask(task);
+    setTask('');
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Add a task"
         placeholderTextColor="#B2B2B2"
-        value={value}
-        onChangeText={onChange}
+        value={task}
+        onChangeText={setTask}
       />
       <TouchableOpacity
-        onPress={onAddTask}
+        onPress={handleAddTask}
         style={styles.button}
         activeOpacity={0.5}>
         <Text style={styles.buttonText}>+</Text>

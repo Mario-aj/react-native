@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
+
+//@ts-ignore
+import logo from '../assets/logo.png';
 
 export const Header = ({ count }: { count: number }) => {
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
-        <Text style={styles.logo}>to.do</Text>
+        <Image source={logo} />
         <View style={styles.teskCounter}>
           <Text style={styles.headerText}>You have</Text>
           <Text style={[styles.headerText, styles.headerTextBold]}>
@@ -33,12 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  logo: {
-    fontSize: 32,
-    color: '#fff',
-    fontWeight: 'bold',
-    fontFamily: 'sans-serif-medium',
   },
   teskCounter: {
     flexDirection: 'row',
