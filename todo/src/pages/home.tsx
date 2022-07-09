@@ -6,12 +6,28 @@ import { AddTask } from '../components/addTask';
 import { Header } from '../components/header';
 
 export const Home = () => {
+  const [newTask, setNewTask] = React.useState('');
+  const [tasks, setTasks] = React.useState<string[]>([]);
+
+  const handleAddNewTask = () => {
+    if (!newTask.trim()) {
+      return;
+    }
+
+    setTasks(currentTasks => [...currentTasks, newTask]);
+    setNewTask('');
+  };
+
   return (
     <View style={styles.container}>
-      <Header />
+      <Header count={tasks.length} />
       <View style={styles.body}>
-        <AddTask />
-        <TaskList />
+        <AddTask
+          value={newTask}
+          onChange={setNewTask}
+          onAddTask={handleAddNewTask}
+        />
+        <TaskList data={tasks} />
       </View>
     </View>
   );

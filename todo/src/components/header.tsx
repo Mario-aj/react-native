@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export const Header = () => {
+export const Header = ({ count }: { count: number }) => {
   return (
     <View style={styles.header}>
       <View style={styles.headerContent}>
@@ -10,7 +10,7 @@ export const Header = () => {
           <Text style={styles.headerText}>You have</Text>
           <Text style={[styles.headerText, styles.headerTextBold]}>
             {' '}
-            3 tasks
+            {count > 1 ? `${count} tasks` : `${count} task`}
           </Text>
         </View>
       </View>

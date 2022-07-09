@@ -7,15 +7,26 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export const AddTask = () => {
+type Props = {
+  value: string;
+  onAddTask: () => void;
+  onChange: (text: string) => void;
+};
+
+export const AddTask = ({ value, onChange, onAddTask }: Props) => {
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Add a task"
         placeholderTextColor="#B2B2B2"
+        value={value}
+        onChangeText={onChange}
       />
-      <TouchableOpacity style={styles.button} activeOpacity={0.5}>
+      <TouchableOpacity
+        onPress={onAddTask}
+        style={styles.button}
+        activeOpacity={0.5}>
         <Text style={styles.buttonText}>+</Text>
       </TouchableOpacity>
     </View>

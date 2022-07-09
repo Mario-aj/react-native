@@ -1,31 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 
-export const TaskList = () => {
+export const TaskList = ({ data }: { data: string[] }) => {
   return (
     <FlatList
-      data={[
-        'Ler meu livro favorito',
-        'Arrumar o quarto',
-        'Lavar meu possante',
-        'Estudar react',
-        'Ler meu livro favorito',
-        'Arrumar o quarto',
-        'Lavar meu possante',
-        'Estudar react',
-        'Ler meu livro favorito',
-        'Arrumar o quarto',
-        'Lavar meu possante',
-        'Estudar react',
-        'Ler meu livro favorito',
-        'Arrumar o quarto',
-        'Lavar meu possante',
-        'Estudar react',
-        'Ler meu livro favorito',
-        'Arrumar o quarto',
-        'Lavar meu possante',
-        'Estudar react',
-      ]}
+      data={data}
       keyExtractor={(item, idx) => item + idx}
       renderItem={({ item, index }) => (
         <View style={[styles.cardTaks, index % 2 === 0 && styles.evenCard]}>
@@ -44,7 +23,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   evenCard: {
-    backgroundColor: '#ddd',
+    backgroundColor: '#eee',
   },
   carItem: {
     fontSize: 14,
