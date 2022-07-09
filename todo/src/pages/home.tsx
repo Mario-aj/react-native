@@ -28,12 +28,24 @@ export const Home = () => {
     setTasks(currentTasks => currentTasks.filter(task => task.id !== taskId));
   };
 
+  const handleCompleteTask = (taskId: string) => {
+    setTasks(currentTasks =>
+      currentTasks.map(task =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Header count={tasks.length} />
       <View style={styles.body}>
         <AddTask onAddTask={handleAddNewTask} />
-        <TaskList data={tasks} onRemoveTask={handleRemoveTask} />
+        <TaskList
+          data={tasks}
+          onRemoveTask={handleRemoveTask}
+          onCompleteTask={handleCompleteTask}
+        />
       </View>
     </View>
   );
