@@ -25,10 +25,11 @@ export function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-        <Dashboard />
-      </SafeAreaView>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={theme.colors.primary}
+      />
+      <Dashboard />
     </ThemeProvider>
   );
 }
