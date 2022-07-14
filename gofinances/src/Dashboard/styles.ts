@@ -40,9 +40,11 @@ export const UserAvatar = styled.Image`
   height: ${RFValue(48)}px;
   border-radius: 8px;
 `;
+
 export const User = styled.View`
   margin-left: 14px;
 `;
+
 export const UserGreeting = styled.Text(
   ({ theme }) => css`
     color: ${theme.colors.shape};
