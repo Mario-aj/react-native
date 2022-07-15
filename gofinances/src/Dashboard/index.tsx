@@ -1,5 +1,7 @@
 import React from "react";
 
+import { HilightCart } from "./HilightCart";
+
 import {
   Container,
   Header,
@@ -10,6 +12,7 @@ import {
   UserGreeting,
   UserName,
   Icon,
+  HilightCarts,
 } from "./styles";
 
 export const Dashboard = () => {
@@ -31,6 +34,12 @@ export const Dashboard = () => {
           <Icon name="power" />
         </UserWrapper>
       </Header>
+
+      <HilightCarts>
+        <HilightCart />
+        <HilightCart />
+        <HilightCart />
+      </HilightCarts>
     </Container>
   );
 };
