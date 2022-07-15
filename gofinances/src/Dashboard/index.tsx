@@ -13,7 +13,10 @@ import {
   UserName,
   Icon,
   HilightCards,
+  TransctionList,
+  Title,
 } from "./styles";
+import { TransactionCard } from "./TransactionCard";
 
 export const Dashboard = () => {
   return (
@@ -27,8 +30,8 @@ export const Dashboard = () => {
               }}
             />
             <User>
-              <UserGreeting>Olá, </UserGreeting>
-              <UserName>John Doe</UserName>
+              <UserGreeting>Hello, </UserGreeting>
+              <UserName>Mário Jorge</UserName>
             </User>
           </UserInfo>
           <Icon name="power" />
@@ -55,6 +58,12 @@ export const Dashboard = () => {
           lastTransaction="April 1st to 16th"
         />
       </HilightCards>
+
+      <TransctionList>
+        <Title>Listing</Title>
+
+        <TransactionCard />
+      </TransctionList>
     </Container>
   );
 };
