@@ -1,6 +1,6 @@
 import React from "react";
 
-import { HilightCart } from "./HilightCart";
+import { HilightCard } from "./HilightCard";
 
 import {
   Container,
@@ -12,7 +12,7 @@ import {
   UserGreeting,
   UserName,
   Icon,
-  HilightCarts,
+  HilightCards,
 } from "./styles";
 
 export const Dashboard = () => {
@@ -35,11 +35,26 @@ export const Dashboard = () => {
         </UserWrapper>
       </Header>
 
-      <HilightCarts>
-        <HilightCart />
-        <HilightCart />
-        <HilightCart />
-      </HilightCarts>
+      <HilightCards>
+        <HilightCard
+          type="income"
+          title="Income"
+          amount="$ 17.400,00"
+          lastTransaction="Last incoming April 13th"
+        />
+        <HilightCard
+          type="outcome"
+          title="Outcome"
+          amount="$ 1.259,00"
+          lastTransaction="Last out coming April 3rd"
+        />
+        <HilightCard
+          type="total"
+          title="Total"
+          amount="$ 1.259,00"
+          lastTransaction="April 1st to 16th"
+        />
+      </HilightCards>
     </Container>
   );
 };

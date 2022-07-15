@@ -71,11 +71,11 @@ export const Icon = styled(Feather)(
   `
 );
 
-export const HilightCarts = styled.ScrollView.attrs({
+export const HilightCards = styled.ScrollView.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: {
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
   },
 })`
   width: 100%;
