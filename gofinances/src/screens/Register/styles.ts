@@ -36,3 +36,9 @@ export const Form = styled.View`
 
   padding: 24px;
 `;
+
+export const TransationsType = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;

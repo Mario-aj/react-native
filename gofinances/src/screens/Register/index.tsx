@@ -1,11 +1,18 @@
 import React from "react";
 
-import { Container, Header, Title, Form } from "./styles";
+import { Container, Header, Title, Form, TransationsType } from "./styles";
 
+import { TransactionTypeButton } from "../../shared/TransationTypeButton";
 import { Button } from "../../shared/Button";
 import { Input } from "../../shared/input";
 
 export const Register = () => {
+  const [transactionType, setTransactionType] = React.useState("");
+
+  function handleSelectTransactionType(type: "income" | "outcome") {
+    setTransactionType(type);
+  }
+
   return (
     <Container>
       <Header>
@@ -16,6 +23,22 @@ export const Register = () => {
         <Input placeholder="Name" placeholderTextColor="#ddd" />
         <Input placeholder="Price" placeholderTextColor="#ddd" />
 
+        <TransationsType>
+          <TransactionTypeButton
+            type="income"
+            title="Income"
+            style={{ marginRight: 6 }}
+            isSelected={transactionType === "income"}
+            onPress={() => handleSelectTransactionType("income")}
+          />
+          <TransactionTypeButton
+            type="outcome"
+            title="Outcome"
+            style={{ marginLeft: 6 }}
+            isSelected={transactionType === "outcome"}
+            onPress={() => handleSelectTransactionType("outcome")}
+          />
+        </TransationsType>
         <Button title="Send" />
       </Form>
     </Container>
