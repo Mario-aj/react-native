@@ -5,6 +5,7 @@ import { Container, Header, Title, Form, TransationsType } from "./styles";
 import { TransactionTypeButton } from "../../shared/TransationTypeButton";
 import { Button } from "../../shared/Button";
 import { Input } from "../../shared/input";
+import { CategorySelect } from "../../shared/CategorySelect";
 
 export const Register = () => {
   const [transactionType, setTransactionType] = React.useState("");
@@ -39,6 +40,8 @@ export const Register = () => {
             onPress={() => handleSelectTransactionType("outcome")}
           />
         </TransationsType>
+
+        <CategorySelect title="category" />
         <Button title="Send" />
       </Form>
     </Container>
