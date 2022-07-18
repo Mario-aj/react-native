@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar, SafeAreaView } from "react-native";
+import { StatusBar } from "react-native";
 import { ThemeProvider } from "styled-components";
 import AppLoading from "expo-app-loading";
 import {
@@ -10,7 +10,8 @@ import {
 } from "@expo-google-fonts/poppins";
 
 import theme from "./global/theme";
-import { Dashboard } from "./Dashboard";
+import { Dashboard } from "./screens/Dashboard";
+import { Register } from "./screens/Register";
 
 export function App() {
   const [fontsLoaded] = useFonts({
@@ -29,7 +30,8 @@ export function App() {
         barStyle="light-content"
         backgroundColor={theme.colors.primary}
       />
-      <Dashboard />
+      {/* <Dashboard /> */}
+      <Register />
     </ThemeProvider>
   );
 }
