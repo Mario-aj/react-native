@@ -1,6 +1,8 @@
 import React from "react";
+import { getBottomSpace } from "react-native-iphone-x-helper";
 
 import { HilightCard } from "./HilightCard";
+import type { Data } from "./TransactionCard";
 
 import {
   Container,
@@ -13,12 +15,52 @@ import {
   UserName,
   Icon,
   HilightCards,
-  TransctionList,
+  Transctions,
   Title,
+  TransctionList,
 } from "./styles";
 import { TransactionCard } from "./TransactionCard";
 
 export const Dashboard = () => {
+  const data = [
+    {
+      amount: "$ 12.000,00",
+      title: "Site Development",
+      category: {
+        name: "Sales",
+        icon: "dollar-sign",
+      },
+      date: "18/07/2022",
+    },
+    {
+      amount: "$ 12.000,00",
+      title: "Site Development",
+      category: {
+        name: "Sales",
+        icon: "dollar-sign",
+      },
+      date: "18/07/2022",
+    },
+    {
+      amount: "$ 12.000,00",
+      title: "Site Development",
+      category: {
+        name: "Sales",
+        icon: "dollar-sign",
+      },
+      date: "18/07/2022",
+    },
+    {
+      amount: "$ 12.000,00",
+      title: "Site Development",
+      category: {
+        name: "Sales",
+        icon: "dollar-sign",
+      },
+      date: "18/07/2022",
+    },
+  ];
+
   return (
     <Container>
       <Header>
@@ -59,11 +101,16 @@ export const Dashboard = () => {
         />
       </HilightCards>
 
-      <TransctionList>
+      <Transctions>
         <Title>Listing</Title>
 
-        <TransactionCard />
-      </TransctionList>
+        <TransctionList
+          data={data}
+          renderItem={({ item }) => <TransactionCard data={item as Data} />}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: getBottomSpace() }}
+        />
+      </Transctions>
     </Container>
   );
 };
