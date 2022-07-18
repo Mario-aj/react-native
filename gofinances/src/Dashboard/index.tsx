@@ -24,6 +24,7 @@ import { TransactionCard } from "./TransactionCard";
 export const Dashboard = () => {
   const data = [
     {
+      type: "positive",
       amount: "$ 12.000,00",
       title: "Site Development",
       category: {
@@ -33,6 +34,7 @@ export const Dashboard = () => {
       date: "18/07/2022",
     },
     {
+      type: "negative",
       amount: "$ 12.000,00",
       title: "Site Development",
       category: {
@@ -42,20 +44,22 @@ export const Dashboard = () => {
       date: "18/07/2022",
     },
     {
+      type: "positive",
       amount: "$ 12.000,00",
       title: "Site Development",
       category: {
         name: "Sales",
-        icon: "dollar-sign",
+        icon: "coffee",
       },
       date: "18/07/2022",
     },
     {
+      type: "negative",
       amount: "$ 12.000,00",
       title: "Site Development",
       category: {
         name: "Sales",
-        icon: "dollar-sign",
+        icon: "shopping-bag",
       },
       date: "18/07/2022",
     },

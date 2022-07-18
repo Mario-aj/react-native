@@ -20,6 +20,7 @@ export type Data = {
   title: string;
   amount: string;
   category: Category;
+  type: "positive" | "negative";
 };
 
 type Props = {
@@ -30,7 +31,10 @@ export const TransactionCard = ({ data }: Props) => {
   return (
     <Container>
       <Title>{data.title}</Title>
-      <Amount>{data.amount}</Amount>
+      <Amount type={data.type}>
+        {data.type === "positive" ? "+ " : "- "}
+        {data.amount}
+      </Amount>
 
       <Footer>
         <Category>
