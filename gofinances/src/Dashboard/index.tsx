@@ -1,8 +1,9 @@
 import React from "react";
-import { getBottomSpace } from "react-native-iphone-x-helper";
 
 import { HilightCard } from "./HilightCard";
-import type { Data } from "./TransactionCard";
+import { TransactionCard } from "./TransactionCard";
+
+import type { TransactionCardProps } from "./TransactionCard";
 
 import {
   Container,
@@ -19,11 +20,15 @@ import {
   Title,
   TransctionList,
 } from "./styles";
-import { TransactionCard } from "./TransactionCard";
+
+export type DataListProps = TransactionCardProps & {
+  id: string;
+};
 
 export const Dashboard = () => {
-  const data = [
+  const data: DataListProps[] = [
     {
+      id: "1",
       type: "positive",
       amount: "$ 12.000,00",
       title: "Site Development",
@@ -34,16 +39,18 @@ export const Dashboard = () => {
       date: "18/07/2022",
     },
     {
+      id: "2",
       type: "negative",
       amount: "$ 12.000,00",
       title: "Site Development",
       category: {
         name: "Sales",
-        icon: "dollar-sign",
+        icon: "shopping-cart",
       },
       date: "18/07/2022",
     },
     {
+      id: "3",
       type: "positive",
       amount: "$ 12.000,00",
       title: "Site Development",
@@ -54,6 +61,7 @@ export const Dashboard = () => {
       date: "18/07/2022",
     },
     {
+      id: "4",
       type: "negative",
       amount: "$ 12.000,00",
       title: "Site Development",
@@ -110,9 +118,11 @@ export const Dashboard = () => {
 
         <TransctionList
           data={data}
-          renderItem={({ item }) => <TransactionCard data={item as Data} />}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: getBottomSpace() }}
+          // @ts-ignore
+          keyExtractor={(item: DataListProps) => item.id}
+          renderItem={({ item }) => (
+            <TransactionCard data={item as DataListProps} />
+          )}
         />
       </Transctions>
     </Container>

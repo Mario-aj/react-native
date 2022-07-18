@@ -1,8 +1,11 @@
-import styled from "styled-components/native";
 import { css } from "styled-components";
 import { Feather } from "@expo/vector-icons";
+import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
 
 export const Container = styled.View(
   ({ theme }) => css`
@@ -98,4 +101,7 @@ export const Title = styled.Text(
   `
 );
 
-export const TransctionList = styled.FlatList``;
+export const TransctionList = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { paddingBottom: getBottomSpace() },
+})``;

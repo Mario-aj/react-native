@@ -15,7 +15,7 @@ type Category = {
   icon: string;
 };
 
-export type Data = {
+export type TransactionCardProps = {
   date: string;
   title: string;
   amount: string;
@@ -24,7 +24,7 @@ export type Data = {
 };
 
 type Props = {
-  data: Data;
+  data: TransactionCardProps;
 };
 
 export const TransactionCard = ({ data }: Props) => {
