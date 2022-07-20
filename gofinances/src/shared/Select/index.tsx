@@ -7,7 +7,7 @@ type Props = {
   title: string;
 };
 
-export const CategorySelect = ({ title }: Props) => {
+export const Select = ({ title }: Props) => {
   return (
     <Container>
       <Category>{title}</Category>
