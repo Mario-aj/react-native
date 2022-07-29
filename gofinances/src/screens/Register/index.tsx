@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal } from "react-native";
+import { useForm } from "react-hook-form";
 
 import { Container, Header, Title, Form, TransationsType } from "./styles";
 
@@ -7,9 +8,12 @@ import { TransactionTypeButton } from "../../shared/TransationTypeButton";
 import { CategorySelect } from "../CategorySelect";
 import { Button } from "../../shared/Button";
 import { Select } from "../../shared/Select";
-import { Input } from "../../shared/input";
+import { InputForm } from "../../shared/InputForm";
+
+type FormData = { name: string; amount: string };
 
 export const Register = () => {
+  const { control, handleSubmit: onSubmit } = useForm();
   const [transactionType, setTransactionType] = React.useState("");
   const [modalVisibility, setModalVisibility] = React.useState(false);
   const [category, setCategory] = React.useState({
@@ -29,6 +33,16 @@ export const Register = () => {
     setModalVisibility(false);
   }, []);
 
+  const handleSubmit = React.useCallback((form: Record<string, FormData>) => {
+    const data = {
+      ...form,
+      type: transactionType,
+      category: category.key,
+    };
+
+    console.log(data);
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -36,8 +50,18 @@ export const Register = () => {
       </Header>
 
       <Form>
-        <Input placeholder="Name" placeholderTextColor="#ddd" />
-        <Input placeholder="Price" placeholderTextColor="#ddd" />
+        <InputForm
+          control={control}
+          name="name"
+          placeholder="Name"
+          placeholderTextColor="#ddd"
+        />
+        <InputForm
+          control={control}
+          name="amount"
+          placeholder="Price"
+          placeholderTextColor="#ddd"
+        />
 
         <TransationsType>
           <TransactionTypeButton
@@ -57,7 +81,7 @@ export const Register = () => {
         </TransationsType>
 
         <Select title={category.name} onPress={handleOpenModal} />
-        <Button title="Send" />
+        <Button title="Send" onPress={onSubmit(handleSubmit)} />
       </Form>
 
       <Modal visible={modalVisibility}>

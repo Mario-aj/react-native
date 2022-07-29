@@ -27,9 +27,9 @@ type Props = {
 
 export const CategorySelect = ({ category, onSelect, onClose }: Props) => {
   const handleSelect = (item: Category) => {
-    console.log(item);
     onSelect(item);
   };
+
   return (
     <Container>
       <Header>
