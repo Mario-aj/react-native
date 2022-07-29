@@ -20,12 +20,16 @@ type Category = {
 };
 
 type Props = {
-  category: string;
+  category: Category;
   onSelect: (category: Category) => void;
   onClose: () => void;
 };
 
 export const CategorySelect = ({ category, onSelect, onClose }: Props) => {
+  const handleSelect = (item: Category) => {
+    console.log(item);
+    onSelect(item);
+  };
   return (
     <Container>
       <Header>
@@ -37,7 +41,10 @@ export const CategorySelect = ({ category, onSelect, onClose }: Props) => {
         style={{ flex: 1, width: "100%" }}
         keyExtractor={(item) => item.key}
         renderItem={({ item }) => (
-          <CategoryItem>
+          <CategoryItem
+            onPress={() => handleSelect(item)}
+            isSelected={item.key === category.key}
+          >
             <Icon name={item.icon} />
             <CategoryName>{item.name}</CategoryName>
           </CategoryItem>
@@ -46,7 +53,7 @@ export const CategorySelect = ({ category, onSelect, onClose }: Props) => {
       />
 
       <Footer>
-        <Button title="Selecionar" />
+        <Button title="Selecionar" onPress={onClose} />
       </Footer>
     </Container>
   );

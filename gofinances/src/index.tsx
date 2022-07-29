@@ -12,7 +12,6 @@ import {
 import theme from "./global/theme";
 import { Dashboard } from "./screens/Dashboard";
 import { Register } from "./screens/Register";
-import { CategorySelect } from "./screens/CategorySelect";
 
 export function App() {
   const [fontsLoaded] = useFonts({
@@ -32,8 +31,7 @@ export function App() {
         backgroundColor={theme.colors.primary}
       />
       {/* <Dashboard /> */}
-      {/* <Register /> */}
-      <CategorySelect onSelect={() => {}} onClose={() => {}} category="" />
+      <Register />
     </ThemeProvider>
   );
 }
