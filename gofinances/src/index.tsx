@@ -8,10 +8,11 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
+import { NavigationContainer } from "@react-navigation/native";
+
+import { AppRoutes } from "./routes/app.routes";
 
 import theme from "./global/theme";
-import { Dashboard } from "./screens/Dashboard";
-import { Register } from "./screens/Register";
 
 export function App() {
   const [fontsLoaded] = useFonts({
@@ -30,8 +31,9 @@ export function App() {
         barStyle="light-content"
         backgroundColor={theme.colors.primary}
       />
-      {/* <Dashboard /> */}
-      <Register />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
