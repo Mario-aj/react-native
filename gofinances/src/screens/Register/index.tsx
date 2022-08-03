@@ -1,5 +1,6 @@
 import React from "react";
 import { Alert, Keyboard, Modal, TouchableWithoutFeedback } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -37,6 +38,8 @@ export const Register = () => {
     name: "category",
   });
 
+  const datakey = "@gofinance:transactions";
+
   function handleSelectTransactionType(type: "income" | "outcome") {
     setTransactionType(type);
   }
@@ -65,10 +68,25 @@ export const Register = () => {
         category: category.key,
       };
 
-      console.log({ data });
+      (async () => {
+        try {
+          await AsyncStorage.setItem(datakey, JSON.stringify(data));
+          Alert.alert("Transação cadastrada com sucesso");
+        } catch (error) {
+          console.log(error);
+          Alert.alert("Erro ao salvar transação");
+        }
+      })();
     },
     [category, transactionType]
   );
+
+  React.useEffect(() => {
+    (async () => {
+      const data = await AsyncStorage.getItem(datakey);
+      console.log(JSON.parse(data!));
+    })();
+  }, []);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
