@@ -2,6 +2,7 @@ import { css } from "styled-components";
 import { Feather } from "@expo/vector-icons";
 import styled from "styled-components/native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { BorderlessButton } from "react-native-gesture-handler";
 import {
   getBottomSpace,
   getStatusBarHeight,
@@ -65,6 +66,9 @@ export const UserName = styled.Text(
     font-family: ${theme.fonts.bold};
   `
 );
+
+//@ts-ignore
+export const LogoutButton = styled(BorderlessButton)(({ theme }) => css``);
 
 //@ts-ignore
 export const Icon = styled(Feather)(
